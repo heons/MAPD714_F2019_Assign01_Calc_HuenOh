@@ -90,6 +90,9 @@
                                                         <state key="normal" title="AC">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3LF-ly-vhv"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -143,6 +146,9 @@
                                                         <state key="normal" title="+/-">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="21O-Da-NoD"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -196,6 +202,9 @@
                                                         <state key="normal" title="%">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oOW-ZD-3Ro"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -249,6 +258,9 @@
                                                         <state key="normal" title="÷">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P3U-0K-7Lz"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -308,6 +320,9 @@
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Nj-As-hde"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -361,6 +376,9 @@
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pDu-0y-uJF"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -414,6 +432,9 @@
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VTi-gy-fk8"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -467,6 +488,9 @@
                                                         <state key="normal" title="x">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Lk-ub-5Sy"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -526,6 +550,9 @@
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TaV-IK-jln"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -579,6 +606,9 @@
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e4e-Zm-S0G"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -632,6 +662,9 @@
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="js5-aE-R2d"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -685,6 +718,9 @@
                                                         <state key="normal" title="-">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lMW-Vf-bM5"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -744,6 +780,9 @@
                                                         <state key="normal" title="1">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I7s-VT-Nau"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -797,6 +836,9 @@
                                                         <state key="normal" title="2">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QYS-6D-D2q"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -850,6 +892,9 @@
                                                         <state key="normal" title="3">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HXs-yg-aCA"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -903,6 +948,9 @@
                                                         <state key="normal" title="+">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vum-z4-ReM"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -962,6 +1010,9 @@
                                                         <state key="normal" title="0">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lph-rA-C1n"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -1015,6 +1066,9 @@
                                                         <state key="normal" title=".">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Pz-mB-1BE"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -1068,6 +1122,9 @@
                                                         <state key="normal" title="=">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="CalButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Gg-fv-5Ny"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -1161,6 +1218,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="calResult" destination="lMl-4X-PG0" id="SRN-f7-QLd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
