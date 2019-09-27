@@ -172,9 +172,10 @@ class ViewController: UIViewController {
                 }
  
                 //set text and reset
+                let strFinalEquation = m_equation + calCur + "=" + calNum
                 initVariables()
-                calResult.text = calNum
-                
+                //calResult.text = calNum
+                calEquation.text = strFinalEquation
                 break
             
             case ".": //no-activate after operand
