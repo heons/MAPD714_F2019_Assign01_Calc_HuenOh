@@ -217,28 +217,28 @@ class ViewController: UIViewController {
         }
     }
     
+    // Do calcuation with two numbers and one operand
     func calOperand(strNum1:String, strNum2:String, strOp:String)->String {
-        let num1 = Double(strNum1) ?? 0
-        let num2 = Double(strNum2) ?? 0
+        let num1 = Double(strNum1)!
+        let num2 = Double(strNum2)!
         var calNum : Double = 0
         
         switch (strOp) {
-        case "+":
-            calNum = num1 + num2
-        case "-":
-            calNum = num1 - num2
-        case "%":
-            calNum = num1.truncatingRemainder(dividingBy: num2)// div 0?
-        case "÷":
-            calNum = num1 / num2 // div 0? -> becomes inf
-        case "x":
-            calNum = num1 * num2
-        default:
-            calNum = 0
+            case "+":
+                calNum = num1 + num2
+            case "-":
+                calNum = num1 - num2
+            case "%":
+                calNum = num1.truncatingRemainder(dividingBy: num2) // div 0? -> nan
+            case "÷":
+                calNum = num1 / num2 // div 0? -> inf
+            case "x":
+                calNum = num1 * num2
+            default:
+                calNum = 0
         }
         
-        let strCalNum = String(calNum)
-        return strCalNum
+        return String(calNum)
     }
 }
 
