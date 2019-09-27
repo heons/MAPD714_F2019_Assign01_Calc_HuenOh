@@ -43,10 +43,9 @@ class ViewController: UIViewController {
     // Handelr for buttons
     @IBAction func CalButtons(_ sender: UIButton) {
         let calButton = sender.titleLabel?.text ?? ""
-        var calCur = calResult.text ?? ""
         
         
-        print("Current input value : \(calCur)")
+        print("Current input value : \(m_number)")
         //print("Current input value : \(calEqCur)")
         print("Current button pressed : \(calButton)")
         
@@ -61,36 +60,34 @@ class ViewController: UIViewController {
                 break;
             
             case "+/-":
-                if(calCur == "0")
+                if(m_number == "0")
                 {
                     break;
                 }
                 
                 if (m_sign == false) {
-                    calCur = String(calCur[calCur.index(after:calCur.startIndex)...])
+                    m_number = String(m_number[m_number.index(after:m_number.startIndex)...])
                 } else {
-                    calCur = "-" + calCur
+                    m_number = "-" + m_number
                 }
-                calResult.text = calCur
+                calResult.text = m_number
                 
                 m_sign = !m_sign
-                calEquation.text = m_equation + updateSignOfNumber(number:calCur)
+                calEquation.text = m_equation + updateSignOfNumber(number:m_number)
                 
                 break;
             
-            case "%", "÷", "x", "-", "+": //multiple hit - divid by zero
+            case "%", "÷", "x", "-", "+":
+                // For the multiple hit -> only the first hit counts
                 if (m_operand.isEmpty) {
                     m_operand = calButton
                     
                     // add to list
-                    m_listNumbers.append(calCur)
+                    m_listNumbers.append(m_number)
                     m_listOperands.append(m_operand)
                     
-                    print(m_listNumbers)
-                    print(m_listOperands)
-                    
                     // m_operand, calCur
-                    m_equation = m_equation + updateSignOfNumber(number:calCur) + m_operand
+                    m_equation = m_equation + updateSignOfNumber(number:m_number) + m_operand
                     calEquation.text = m_equation
                     
                     //clear
@@ -98,19 +95,20 @@ class ViewController: UIViewController {
                     m_number = "0"
                     m_sign = true
                     calResult.text = "0"
-                    calCur = calResult.text ?? ""
                 } else {
+                    // Do nothing
                     //let calEqCur = calEquation.text ?? ""
                     //calEquation.text = String(calEqCur[calEqCur.startIndex..<calEqCur.index(before: calEqCur.endIndex)]) + calButton
                 }
             
             // Do calcuation and show the result
             case "=":
-                m_listNumbers.append(calCur)
+                m_listNumbers.append(m_number)
                 
                 var listOprTmp = [String]()
                 var listNumTmp = [String]()
-                var calNum = calCur
+                
+                var calNum = m_listNumbers[0]
                 
                 let lenNums = m_listNumbers.endIndex
                 let lenOprs = m_listOperands.endIndex
@@ -133,15 +131,13 @@ class ViewController: UIViewController {
                         if (1 == m_dictOperands[op]) {
                             // x, /, %
                             calNum = calOperand(strNum1: num1, strNum2: num2, strOp: op)
-                            print("calNum step1: \(calNum)")
                             m_listNumbers[index+1] = calNum
                         } else {
                             listOprTmp.append(op)
                             listNumTmp.append(num1)
                         }
                     }
-                    
-                    //print("\(index) : \(op)")
+                    print("calNum step1: \(calNum)")
                 }
                 
                 
@@ -167,40 +163,37 @@ class ViewController: UIViewController {
                         listNumTmp[index+1] = calNum
                     }
                     
-                    
                     print("calNum step2: \(calNum)")
                 }
  
                 //set text and reset
-                let strFinalEquation = m_equation + calCur + "=" + calNum
+                let strFinalEquation = m_equation + updateSignOfNumber(number:m_number) + "=" + calNum
                 initVariables()
                 //calResult.text = calNum
                 calEquation.text = strFinalEquation
                 break
             
             case ".": //no-activate after operand
-                if (calCur.contains(".")) {
+                if (m_number.contains(".")) {
                     print(". is already here")
                 } else {
-                    calCur += calButton
-                    calResult.text = calCur
+                    m_number += calButton
+                    calResult.text = m_number
                     
-                    calEquation.text = m_equation + updateSignOfNumber(number:calCur)
+                    calEquation.text = m_equation + updateSignOfNumber(number:m_number)
                 }
                 break;
             
             
             default:
                 // Check if the current typed value is 0
-                if (calCur == "0") {
-                    calResult.text = calButton
-                    calEquation.text = m_equation + calButton
+                if (m_number == "0") {
+                    m_number = calButton
                 } else {
-                    calCur = calCur + calButton
-                    calResult.text = calCur
-                    
-                    calEquation.text = m_equation + updateSignOfNumber(number:calCur)
+                    m_number = m_number + calButton
                 }
+                calResult.text = m_number
+                calEquation.text = m_equation + updateSignOfNumber(number:m_number)
         }
     }
     
