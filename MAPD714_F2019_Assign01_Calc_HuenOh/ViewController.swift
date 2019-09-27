@@ -22,6 +22,15 @@ class ViewController: UIViewController {
     
     private var m_sign:Bool = true // true : positive, false : negative
     
+    
+    private var m_listOperands:[String] = [String]()
+    private var m_listNumbers:[String] = [String]()
+    
+    
+    // Dictionary for operands' priority
+    private let m_dictOperands:[String: Int] = ["%":1, "÷":1, "x":1,
+                                                "-":0, "+":0]
+    
     // When the View is loaded.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +45,6 @@ class ViewController: UIViewController {
         let calButton = sender.titleLabel?.text ?? ""
         var calCur = calResult.text ?? ""
         
-        var calUpdate = ""
         
         print("Current input value : \(calCur)")
         //print("Current input value : \(calEqCur)")
@@ -52,7 +60,7 @@ class ViewController: UIViewController {
                 initVariables()
                 break;
             
-            case "+/-": //no-activate after operand
+            case "+/-":
                 if(calCur == "0")
                 {
                     break;
@@ -66,24 +74,107 @@ class ViewController: UIViewController {
                 calResult.text = calCur
                 
                 m_sign = !m_sign
-                calEquation.text = m_equation + updateSignOfNumber(number:calCur) + m_operand
+                calEquation.text = m_equation + updateSignOfNumber(number:calCur)
                 
                 break;
             
-            case "%", "÷", "x", "-", "+":
+            case "%", "÷", "x", "-", "+": //multiple hit - divid by zero
                 if (m_operand.isEmpty) {
                     m_operand = calButton
                     
-                    calEquation.text = m_equation + updateSignOfNumber(number:calCur) + m_operand
+                    // add to list
+                    m_listNumbers.append(calCur)
+                    m_listOperands.append(m_operand)
+                    
+                    print(m_listNumbers)
+                    print(m_listOperands)
+                    
+                    // m_operand, calCur
+                    m_equation = m_equation + updateSignOfNumber(number:calCur) + m_operand
+                    calEquation.text = m_equation
+                    
+                    //clear
+                    m_operand = ""
+                    m_number = "0"
+                    m_sign = true
+                    calResult.text = "0"
+                    calCur = calResult.text ?? ""
                 } else {
                     //let calEqCur = calEquation.text ?? ""
                     //calEquation.text = String(calEqCur[calEqCur.startIndex..<calEqCur.index(before: calEqCur.endIndex)]) + calButton
                 }
             
-            
-            
             // Do calcuation and show the result
             case "=":
+                m_listNumbers.append(calCur)
+                
+                var listOprTmp = [String]()
+                var listNumTmp = [String]()
+                var calNum = calCur
+                
+                let lenNums = m_listNumbers.endIndex
+                let lenOprs = m_listOperands.endIndex
+                
+                for (index, _) in m_listNumbers.enumerated()
+                {
+                    // condition to exit : no operand
+                    if (0 == lenOprs) {
+                        break
+                    }
+                    
+                    if (index + 1 == lenNums){
+                        listNumTmp.append(m_listNumbers[index])
+                        break;
+                    } else {
+                        let op = m_listOperands[index]
+                        let num1 = m_listNumbers[index]
+                        let num2 = m_listNumbers[index+1]
+                        
+                        if (1 == m_dictOperands[op]) {
+                            // x, /, %
+                            calNum = calOperand(strNum1: num1, strNum2: num2, strOp: op)
+                            print("calNum step1: \(calNum)")
+                            m_listNumbers[index+1] = calNum
+                        } else {
+                            listOprTmp.append(op)
+                            listNumTmp.append(num1)
+                        }
+                    }
+                    
+                    //print("\(index) : \(op)")
+                }
+                
+                
+                calNum = listNumTmp[0]
+                let lenNumsTmp = listNumTmp.endIndex
+                let lenOprsTmp = listOprTmp.endIndex
+                
+                for (index, _) in listNumTmp.enumerated() {
+                    // +, -
+                    if (0 == lenOprsTmp) {
+                        break
+                    }
+                    
+                    if (index + 1 == lenNumsTmp){
+                        calNum = listNumTmp[index]
+                        break;
+                    } else {
+                        let op = listOprTmp[index]
+                        let num1 = listNumTmp[index]
+                        let num2 = listNumTmp[index+1]
+                        
+                        calNum = calOperand(strNum1: num1, strNum2: num2, strOp: op)
+                        listNumTmp[index+1] = calNum
+                    }
+                    
+                    
+                    print("calNum step2: \(calNum)")
+                }
+ 
+                //set text and reset
+                initVariables()
+                calResult.text = calNum
+                
                 break
             
             case ".": //no-activate after operand
@@ -93,42 +184,13 @@ class ViewController: UIViewController {
                     calCur += calButton
                     calResult.text = calCur
                     
-                    calUpdate = calCur
-                    if (m_sign == false) {
-                        calUpdate = "(" + calCur + ")"
-                    }
-                    calEquation.text = m_equation + calUpdate + m_operand
-                    
-                    //calEquation.text = m_equation + calCur + m_operand
+                    calEquation.text = m_equation + updateSignOfNumber(number:calCur)
                 }
                 break;
             
+            
             default:
-                if (m_operand.isEmpty) {
-                    print("operand is empty")
-                } else {
-
-                    print("operand: \(m_operand)")
-                    // add to stack
-                    // m_operand, calCur
-                    print(m_equation)
-                    m_equation = calEquation.text ?? ""
-                    //m_equation += m_operand
-                    print(m_equation)
-                    
-                    
-                    calEquation.text = m_equation + updateSignOfNumber(number:calCur) + m_operand
-                    
-                    //clear
-                    m_operand = ""
-                    m_number = "0"
-                    m_sign = true
-                    calResult.text = "0"
-                    calCur = calResult.text ?? ""
-                }
-                
                 // Check if the current typed value is 0
-                // update with -/+
                 if (calCur == "0") {
                     calResult.text = calButton
                     calEquation.text = m_equation + calButton
@@ -136,7 +198,7 @@ class ViewController: UIViewController {
                     calCur = calCur + calButton
                     calResult.text = calCur
                     
-                    calEquation.text = m_equation + updateSignOfNumber(number:calCur) + m_operand
+                    calEquation.text = m_equation + updateSignOfNumber(number:calCur)
                 }
         }
     }
@@ -148,6 +210,9 @@ class ViewController: UIViewController {
         m_operand = ""
         m_equation = ""
         m_sign = true
+        
+        m_listNumbers = [String]()
+        m_listOperands = [String]()
     }
     
     func updateSignOfNumber(number:String)->String{
@@ -156,6 +221,30 @@ class ViewController: UIViewController {
         } else {
             return number
         }
+    }
+    
+    func calOperand(strNum1:String, strNum2:String, strOp:String)->String {
+        let num1 = Double(strNum1) ?? 0
+        let num2 = Double(strNum2) ?? 0
+        var calNum : Double = 0
+        
+        switch (strOp) {
+        case "+":
+            calNum = num1 + num2
+        case "-":
+            calNum = num1 - num2
+        case "%":
+            calNum = num1.truncatingRemainder(dividingBy: num2)// div 0?
+        case "÷":
+            calNum = num1 / num2 // div 0? -> becomes inf
+        case "x":
+            calNum = num1 * num2
+        default:
+            calNum = 0
+        }
+        
+        let strCalNum = String(calNum)
+        return strCalNum
     }
 }
 
