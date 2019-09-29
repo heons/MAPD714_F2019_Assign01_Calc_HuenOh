@@ -11,25 +11,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    // Outlets
+    /* Outlets */
     @IBOutlet weak var calEquation: UILabel! // Label for current equation
     @IBOutlet weak var calResult: UILabel!   // Label for current number and result of the calcuation
     
-    // Member Variables
-    private var m_operand:String = "" // Current operand
-    private var m_number:String = "0" // Current typed number
-    private var m_equation:String = "" // Current typed equation
-    
-    private var m_sign:Bool = true // true : positive, false : negative
-    
-    
-    private var m_listOperands:[String] = [String]()
-    private var m_listNumbers:[String] = [String]()
-    
+    /* Member Variables */
     
     // Dictionary for operands' priority
     private let m_dictOperands:[String: Int] = ["%":1, "÷":1, "x":1,
                                                 "-":0, "+":0]
+    
+    private var m_sign:Bool = true     // Sign for current typed number (true : positive, false : negative)
+    private var m_number:String = "0"  // Current typed number
+    private var m_operand:String = ""  // Current operand
+    private var m_equation:String = "" // Current typed equation
+    
+    private var m_listNumbers:[String] = [String]()  // List of Numbers
+    private var m_listOperands:[String] = [String]() // List of Operands
+    
+    
     
     // When the View is loaded.
     override func viewDidLoad() {
@@ -41,17 +41,14 @@ class ViewController: UIViewController {
     }
 
     // Handelr for buttons
+    // TODO : Seperate it to functions or make cal class
     @IBAction func CalButtons(_ sender: UIButton) {
         let calButton = sender.titleLabel?.text ?? ""
         
-        
-        print("Current input value : \(m_number)")
-        //print("Current input value : \(calEqCur)")
-        print("Current button pressed : \(calButton)")
+        // Debug output
+        print("Current input value/button : \(m_number) / \(calButton)")
         
         //check : devide by zero
-        //operand priority
-        //let dbnum = Double(m_number)
         switch(calButton)
         {
             // Clear everything
@@ -187,6 +184,7 @@ class ViewController: UIViewController {
             
             
             default:
+                // When press numbers
                 // Check if the current typed value is 0
                 if (m_number == "0") {
                     m_number = calButton
@@ -198,13 +196,15 @@ class ViewController: UIViewController {
         }
     }
     
-    func initVariables(){
+    // Initialize/Reset member variables
+    func initVariables() {
         calResult.text = "0"
         calEquation.text = ""
+        
+        m_sign = true
         m_number = "0"
         m_operand = ""
         m_equation = ""
-        m_sign = true
         
         m_listNumbers = [String]()
         m_listOperands = [String]()
@@ -244,5 +244,6 @@ class ViewController: UIViewController {
         
         return String(calNum)
     }
+    
 }
 
