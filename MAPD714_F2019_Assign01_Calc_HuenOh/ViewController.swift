@@ -141,20 +141,21 @@ class ViewController: UIViewController {
                 }
                 
                 
-                calNum = listNumTmp[0]
+                calNum = m_number
                 let lenNumsTmp = listNumTmp.endIndex
                 let lenOprsTmp = listOprTmp.endIndex
                 
                 for (index, _) in listNumTmp.enumerated() {
                     // +, -
                     if (0 == lenOprsTmp) {
+                        calNum = listNumTmp[0]
                         break
                     }
                     
                     if (index + 1 == lenNumsTmp){
                         calNum = listNumTmp[index]
                         break;
-                    } else {
+                    } else   {
                         let op = listOprTmp[index]
                         let num1 = listNumTmp[index]
                         let num2 = listNumTmp[index+1]
@@ -209,6 +210,9 @@ class ViewController: UIViewController {
         m_listOperands = [String]()
     }
     
+    // Update sign of a number
+    // Positive : num
+    // Negative : (-num)
     func updateSignOfNumber(number:String)->String{
         if (m_sign == false) {
             return "(" + number + ")"
