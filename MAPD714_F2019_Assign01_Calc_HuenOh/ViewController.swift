@@ -34,18 +34,28 @@ class ViewController: UIViewController {
     private var m_listOperands:[String] = [String]() // List of Operands
     
     
-    
     // When the View is loaded.
     override func viewDidLoad() {
         
         // Set font properties of calEquation
         calEquation.numberOfLines = 0
+        calEquation.adjustsFontSizeToFitWidth = true
+        calEquation.minimumScaleFactor = 0.1
         
         // Set font properties of calResult
         calResult.font = UIFont.systemFont(ofSize: 80.0)
         calResult.adjustsFontSizeToFitWidth = true
         calResult.minimumScaleFactor = 0.1
         
+       // Set font properties of calHistory
+        calHistory01.adjustsFontSizeToFitWidth = true
+        calHistory02.adjustsFontSizeToFitWidth = true
+        calHistory03.adjustsFontSizeToFitWidth = true
+        calHistory04.adjustsFontSizeToFitWidth = true
+        calHistory01.minimumScaleFactor = 0.1
+        calHistory02.minimumScaleFactor = 0.1
+        calHistory03.minimumScaleFactor = 0.1
+        calHistory04.minimumScaleFactor = 0.1
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
