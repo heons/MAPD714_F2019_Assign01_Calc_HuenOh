@@ -97,6 +97,7 @@ class ViewController: UIViewController {
                     m_listNumbers.append(m_number)
                     m_listOperands.append(m_operand)
                     
+                    
                     // m_operand, calCur
                     m_equation = m_equation + updateSignOfNumber(number:m_number) + m_operand
                     calEquation.text = m_equation
@@ -105,7 +106,9 @@ class ViewController: UIViewController {
                     m_operand = ""
                     m_number = "0"
                     m_sign = true
-                    calResult.text = "0"
+                    
+                    // Display current result
+                    calResult.text = doCalEquation()
                 } else {
                     // Do nothing
                     //let calEqCur = calEquation.text ?? ""
@@ -116,67 +119,7 @@ class ViewController: UIViewController {
             case "=":
                 m_listNumbers.append(m_number)
                 
-                var listOprTmp = [String]()
-                var listNumTmp = [String]()
-                
-                var calNum = m_listNumbers[0]
-                
-                let lenNums = m_listNumbers.endIndex
-                let lenOprs = m_listOperands.endIndex
-                
-                for (index, _) in m_listNumbers.enumerated()
-                {
-                    // condition to exit : no operand
-                    if (0 == lenOprs) {
-                        break
-                    }
-                    
-                    if (index + 1 == lenNums){
-                        listNumTmp.append(m_listNumbers[index])
-                        break;
-                    } else {
-                        let op = m_listOperands[index]
-                        let num1 = m_listNumbers[index]
-                        let num2 = m_listNumbers[index+1]
-                        
-                        if (1 == m_dictOperands[op]) {
-                            // x, /, %
-                            calNum = calOperand(strNum1: num1, strNum2: num2, strOp: op)
-                            m_listNumbers[index+1] = calNum
-                        } else {
-                            listOprTmp.append(op)
-                            listNumTmp.append(num1)
-                        }
-                    }
-                    print("calNum step1: \(calNum)")
-                }
-                
-                
-                calNum = m_number
-                let lenNumsTmp = listNumTmp.endIndex
-                let lenOprsTmp = listOprTmp.endIndex
-                
-                for (index, _) in listNumTmp.enumerated() {
-                    // +, -
-                    if (0 == lenOprsTmp) {
-                        calNum = listNumTmp[0]
-                        break
-                    }
-                    
-                    if (index + 1 == lenNumsTmp){
-                        calNum = listNumTmp[index]
-                        break;
-                    } else   {
-                        let op = listOprTmp[index]
-                        let num1 = listNumTmp[index]
-                        let num2 = listNumTmp[index+1]
-                        
-                        calNum = calOperand(strNum1: num1, strNum2: num2, strOp: op)
-                        listNumTmp[index+1] = calNum
-                    }
-                    
-                    print("calNum step2: \(calNum)")
-                }
+                let calNum = doCalEquation()
  
                 //set text and reset
                 let strFinalEquation = m_equation + updateSignOfNumber(number:m_number) + "=" + calNum
@@ -187,7 +130,6 @@ class ViewController: UIViewController {
                 calHistory03.text = calHistory02.text
                 calHistory02.text = calHistory01.text
                 calHistory01.text = strFinalEquation
-                //calEquation.text = strFinalEquation
                 break
             
             case ".": //no-activate after operand
@@ -217,10 +159,6 @@ class ViewController: UIViewController {
     
     // Initialize/Reset member variables
     func initVariables() {
-        //calHistory04.text = ""
-        //calHistory03.text = ""
-        //calHistory02.text = ""
-        //calHistory01.text = ""
         calResult.text = "0"
         calEquation.text = ""
         
@@ -266,6 +204,78 @@ class ViewController: UIViewController {
         }
         
         return String(calNum)
+    }
+    
+    // Do caculation from the equation
+    func doCalEquation()->String {
+        // For Step1 : Copy list of operands and numbers
+        var listOprOrg = m_listOperands
+        var listNumOrg = m_listNumbers
+        
+        // For Step2 : list of perands and numbers
+        var listOprTmp = [String]()
+        var listNumTmp = [String]()
+        
+        var calNum = listNumOrg[0] // Final calculation result
+        
+        // Step 1 : x, /, %
+        let lenNums = listNumOrg.endIndex
+        let lenOprs = listOprOrg.endIndex
+        for (index, _) in listNumOrg.enumerated()
+        {
+            // Condition to exit : no operand
+            if (0 == lenOprs) {
+                break
+            }
+            
+            if (index + 1 == lenNums) { // Check second number
+                listNumTmp.append(listNumOrg[index])
+                break;
+            } else {
+                let op = listOprOrg[index]
+                let num1 = listNumOrg[index]
+                let num2 = listNumOrg[index+1]
+                
+                if (1 == m_dictOperands[op]) {
+                    // x, /, % : Calculate
+                    calNum = calOperand(strNum1: num1, strNum2: num2, strOp: op)
+                    listNumOrg[index+1] = calNum
+                } else {
+                    // +, - : add to the lists for step2
+                    listOprTmp.append(op)
+                    listNumTmp.append(num1)
+                }
+            }
+            print("calNum step1: \(calNum)")
+        }
+        
+        
+        // Step 2 : +, -
+        let lenNumsTmp = listNumTmp.endIndex
+        let lenOprsTmp = listOprTmp.endIndex
+        for (index, _) in listNumTmp.enumerated() {
+            // Condition to exit : no operand
+            if (0 == lenOprsTmp) {
+                calNum = listNumTmp[0]
+                break
+            }
+            
+            if (index + 1 == lenNumsTmp) { // Check second number
+                calNum = listNumTmp[index]
+                break;
+            } else {
+                let op = listOprTmp[index]
+                let num1 = listNumTmp[index]
+                let num2 = listNumTmp[index+1]
+                
+                calNum = calOperand(strNum1: num1, strNum2: num2, strOp: op)
+                listNumTmp[index+1] = calNum
+            }
+            
+            print("calNum step2: \(calNum)")
+        }
+        
+        return calNum
     }
     
 }
