@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     // Dictionary for operands' priority
     private let m_dictOperands:[String: Int] = ["%":1, "÷":1, "x":1,
                                                 "-":0, "+":0]
-    
+    private var m_isFirstHit = true    // To check if it is first hit after an operand hit
     private var m_sign:Bool = true     // Sign for current typed number (true : positive, false : negative)
     private var m_number:String = "0"  // Current typed number
     private var m_operand:String = ""  // Current operand
@@ -101,7 +101,9 @@ class ViewController: UIViewController {
             // Operands
             case "%", "÷", "x", "-", "+":
                 // For the multiple hit -> only the first hit counts
-                if (m_operand.isEmpty) {
+                if ((m_operand.isEmpty)
+                    && (!m_isFirstHit)) {
+                    
                     m_operand = calButton
                     
                     // add to list
@@ -119,6 +121,8 @@ class ViewController: UIViewController {
                     
                     // Display current result
                     calResult.text = doCalEquation()
+                    
+                    m_isFirstHit = true // true to first hit -> now operand is not applicable
                 } else {
                     // Do nothing
                     //let calEqCur = calEquation.text ?? ""
@@ -128,25 +132,29 @@ class ViewController: UIViewController {
             
             // Do calcuation and show the result
             case "=":
-                // Append number to the number list
-                m_listNumbers.append(m_number)
-                
-                // Do the calcuation
-                let calNum = doCalEquation()
- 
-                //set text and reset
-                let strFinalEquation = m_equation + updateSignOfNumber(number:m_number) + "=" + calNum
-                initVariables()
-                
-                // Update history
-                calHistory04.text = calHistory03.text
-                calHistory03.text = calHistory02.text
-                calHistory02.text = calHistory01.text
-                calHistory01.text = strFinalEquation
+                if (!m_isFirstHit) {
+                    // Append number to the number list
+                    m_listNumbers.append(m_number)
+                    
+                    // Do the calcuation
+                    let calNum = doCalEquation()
+     
+                    //set text and reset
+                    let strFinalEquation = m_equation + updateSignOfNumber(number:m_number) + "=" + calNum
+                    initVariables()
+                    
+                    // Update history
+                    calHistory04.text = calHistory03.text
+                    calHistory03.text = calHistory02.text
+                    calHistory02.text = calHistory01.text
+                    calHistory01.text = strFinalEquation
+                    m_isFirstHit = true  // true to first hit -> now operand is not applicable
+                }
                 break;
             
             // A point
             case ".": //no-activate after operand
+                 m_isFirstHit = false // false to first hit -> now operand is applicable
                 if (m_number.contains(".")) {
                     print(". is already here")
                 } else {
@@ -158,6 +166,7 @@ class ViewController: UIViewController {
             
             // Numbers
             default:
+                 m_isFirstHit = false // false to first hit -> now operand is applicable
                 // Check if the current typed value is 0
                 if (m_number == "0") {
                     m_number = calButton
@@ -174,6 +183,7 @@ class ViewController: UIViewController {
         calResult.text = "0"
         calEquation.text = ""
         
+        m_isFirstHit = true
         m_sign = true
         m_number = "0"
         m_operand = ""
