@@ -16,7 +16,9 @@
 
 import UIKit
 
-
+/**
+ View Controller class.
+ */
 class ViewController: UIViewController {
 
     /* Outlets */
@@ -42,7 +44,15 @@ class ViewController: UIViewController {
     private var m_listOperands:[String] = [String]() // List of Operands
     
     
-    // When the View is loaded.
+    //
+    /**
+     When the View is loaded.
+     Initialize some variables.
+     
+     - Parameters: None
+     
+     - Returns: None
+     */
     override func viewDidLoad() {
         
         // Set font properties of calEquation
@@ -72,8 +82,16 @@ class ViewController: UIViewController {
         initVariables()
     }
 
-    // Handelr for buttons
     // TODO : Seperate it to functions or make cal class
+    /**
+     Handelr for buttons.
+     Do user-interaction when buttons are pressed.
+     
+     - Parameters:
+     - sender: A pressed button object as UIButton.
+     
+     - Returns: None
+     */
     @IBAction func CalButtons(_ sender: UIButton) {
         let calButton = sender.titleLabel?.text ?? ""
         
@@ -186,7 +204,13 @@ class ViewController: UIViewController {
         }
     }
     
-    // Initialize/Reset member variables
+    /**
+     Initialize/Reset member variables.
+     
+     - Parameters: None
+     
+     - Returns: None
+     */
     func initVariables() {
         calResult.text = "0"
         calEquation.text = ""
@@ -201,9 +225,15 @@ class ViewController: UIViewController {
         m_listOperands = [String]()
     }
     
-    // Update sign of a number
-    // Positive : num
-    // Negative : (-num)
+   
+    /**
+     Update sign of a number.
+     
+     - Parameters:
+     - number: A number as String
+
+     - Returns: Positive - number, Negative - (-number) as String
+     */
     func updateSignOfNumber(number:String)->String{
         if (m_sign == false) {
             return "(" + number + ")"
@@ -212,7 +242,16 @@ class ViewController: UIViewController {
         }
     }
     
-    // Do calcuation with two numbers and one operand
+    /**
+     Do calcuation with two numbers and one operand.
+     
+     - Parameters:
+     - strNum1: The 1st number for the operation as String.
+     - strNum2: The 2nd number for the operation as String.
+     - strOp: An operand as String.
+     
+     - Returns: Result of operation as String.
+     */
     func calOperand(strNum1:String, strNum2:String, strOp:String)->String {
         let num1 = Double(strNum1)!
         let num2 = Double(strNum2)!
@@ -236,7 +275,13 @@ class ViewController: UIViewController {
         return String(calNum)
     }
     
-    // Do caculation from the equation
+    /**
+     Do caculation from the equation.
+     
+     - Parameters: None
+     
+     - Returns: Result of the calculation from the equation as String.
+     */
     func doCalEquation()->String {
         // For Step1 : Copy list of operands and numbers
         var listOprOrg = m_listOperands
