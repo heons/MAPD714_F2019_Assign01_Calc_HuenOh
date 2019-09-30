@@ -22,12 +22,12 @@ import UIKit
 class ViewController: UIViewController {
 
     /* Outlets */
-    @IBOutlet weak var calHistory04: UILabel!
-    @IBOutlet weak var calHistory03: UILabel!
-    @IBOutlet weak var calHistory02: UILabel!
-    @IBOutlet weak var calHistory01: UILabel!
-    @IBOutlet weak var calEquation: UILabel! // Label for current equation
-    @IBOutlet weak var calResult: UILabel!   // Label for current number and result of the calcuation
+    @IBOutlet weak var calHistory04: UILabel! // Label for calculation history line04
+    @IBOutlet weak var calHistory03: UILabel! // Label for calculation history line03
+    @IBOutlet weak var calHistory02: UILabel! // Label for calculation history line02
+    @IBOutlet weak var calHistory01: UILabel! // Label for calculation history line01
+    @IBOutlet weak var calEquation: UILabel!  // Label for current equation
+    @IBOutlet weak var calResult: UILabel!    // Label for current number and result of the calcuation
     
     /* Member Variables */
     
