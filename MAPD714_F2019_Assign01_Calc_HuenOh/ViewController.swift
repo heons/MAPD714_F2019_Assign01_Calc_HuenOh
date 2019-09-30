@@ -12,6 +12,10 @@ import UIKit
 class ViewController: UIViewController {
 
     /* Outlets */
+    @IBOutlet weak var calHistory04: UILabel!
+    @IBOutlet weak var calHistory03: UILabel!
+    @IBOutlet weak var calHistory02: UILabel!
+    @IBOutlet weak var calHistory01: UILabel!
     @IBOutlet weak var calEquation: UILabel! // Label for current equation
     @IBOutlet weak var calResult: UILabel!   // Label for current number and result of the calcuation
     
@@ -177,8 +181,13 @@ class ViewController: UIViewController {
                 //set text and reset
                 let strFinalEquation = m_equation + updateSignOfNumber(number:m_number) + "=" + calNum
                 initVariables()
+                
                 //calResult.text = calNum
-                calEquation.text = strFinalEquation
+                calHistory04.text = calHistory03.text
+                calHistory03.text = calHistory02.text
+                calHistory02.text = calHistory01.text
+                calHistory01.text = strFinalEquation
+                //calEquation.text = strFinalEquation
                 break
             
             case ".": //no-activate after operand
@@ -208,6 +217,10 @@ class ViewController: UIViewController {
     
     // Initialize/Reset member variables
     func initVariables() {
+        //calHistory04.text = ""
+        //calHistory03.text = ""
+        //calHistory02.text = ""
+        //calHistory01.text = ""
         calResult.text = "0"
         calEquation.text = ""
         
