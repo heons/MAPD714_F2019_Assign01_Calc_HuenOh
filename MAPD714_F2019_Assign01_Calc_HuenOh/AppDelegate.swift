@@ -5,6 +5,14 @@
 //  Created by HUEN_OH on 2019-09-18.
 //  Copyright © 2019 Centennial College. All rights reserved.
 //
+/*
+ File Name: AppDelegate.swift
+ Author's Name: Huen Oh
+ StudentID: 301082798
+ Date: 2019.09.29
+ App description: The Calculator; Simple calculator
+ Version information: 1.0
+ */
 
 import UIKit
 
