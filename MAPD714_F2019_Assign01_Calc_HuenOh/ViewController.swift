@@ -70,9 +70,10 @@ class ViewController: UIViewController {
                 initVariables()
                 break;
             
+            // Change sign of a number
             case "+/-":
-                if(m_number == "0")
-                {
+                // Doesn't apply for 0
+                if(m_number == "0") {
                     break;
                 }
                 
@@ -85,9 +86,9 @@ class ViewController: UIViewController {
                 
                 m_sign = !m_sign
                 calEquation.text = m_equation + updateSignOfNumber(number:m_number)
-                
                 break;
             
+            // Operands
             case "%", "÷", "x", "-", "+":
                 // For the multiple hit -> only the first hit counts
                 if (m_operand.isEmpty) {
@@ -96,7 +97,6 @@ class ViewController: UIViewController {
                     // add to list
                     m_listNumbers.append(m_number)
                     m_listOperands.append(m_operand)
-                    
                     
                     // m_operand, calCur
                     m_equation = m_equation + updateSignOfNumber(number:m_number) + m_operand
@@ -114,38 +114,40 @@ class ViewController: UIViewController {
                     //let calEqCur = calEquation.text ?? ""
                     //calEquation.text = String(calEqCur[calEqCur.startIndex..<calEqCur.index(before: calEqCur.endIndex)]) + calButton
                 }
+                break;
             
             // Do calcuation and show the result
             case "=":
+                // Append number to the number list
                 m_listNumbers.append(m_number)
                 
+                // Do the calcuation
                 let calNum = doCalEquation()
  
                 //set text and reset
                 let strFinalEquation = m_equation + updateSignOfNumber(number:m_number) + "=" + calNum
                 initVariables()
                 
-                //calResult.text = calNum
+                // Update history
                 calHistory04.text = calHistory03.text
                 calHistory03.text = calHistory02.text
                 calHistory02.text = calHistory01.text
                 calHistory01.text = strFinalEquation
-                break
+                break;
             
+            // A point
             case ".": //no-activate after operand
                 if (m_number.contains(".")) {
                     print(". is already here")
                 } else {
                     m_number += calButton
                     calResult.text = m_number
-                    
                     calEquation.text = m_equation + updateSignOfNumber(number:m_number)
                 }
                 break;
             
-            
+            // Numbers
             default:
-                // When press numbers
                 // Check if the current typed value is 0
                 if (m_number == "0") {
                     m_number = calButton
