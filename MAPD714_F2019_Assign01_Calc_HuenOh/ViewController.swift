@@ -33,6 +33,10 @@ class ViewController: UIViewController {
     // Enums for Operands
     private enum m_eOperand : String {case mod="%", div="÷", mul="x", sub="-", add="+"}
     
+    // Special result : nan, inf
+    private let m_spResultNan = "nan"
+    private let m_spResultInf = "inf"
+    
     // Dictionary for operands' priority
     private let m_dictOperands:[String: Int] = [m_eOperand.mod.rawValue:1
                                                 , m_eOperand.div.rawValue:1
@@ -323,6 +327,16 @@ class ViewController: UIViewController {
                     // x, /, % : Calculate
                     calNum = calOperand(strNum1: num1, strNum2: num2, strOp: op)
                     listNumOrg[index+1] = calNum
+                    
+                    // Check special result and return - the equation is not valid to compute
+                    if (calNum.contains(m_spResultNan)) {
+                        return m_spResultNan
+                    }
+                    if (calNum.contains(m_spResultInf)) {
+                        return m_spResultInf
+                    }
+                    
+                    
                 } else {
                     // +, - : add to the lists for step2
                     listOprTmp.append(op)
