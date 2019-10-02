@@ -30,10 +30,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var calResult: UILabel!    // Label for current number and result of the calcuation
     
     /* Member Variables */
+    // Enums for Operands
+    private enum m_eOperand : String {case mod="%", div="÷", mul="x", sub="-", add="+"}
     
     // Dictionary for operands' priority
-    private let m_dictOperands:[String: Int] = ["%":1, "÷":1, "x":1,
-                                                "-":0, "+":0]
+    private let m_dictOperands:[String: Int] = [m_eOperand.mod.rawValue:1
+                                                , m_eOperand.div.rawValue:1
+                                                , m_eOperand.mul.rawValue:1
+                                                , m_eOperand.sub.rawValue:0
+                                                , m_eOperand.add.rawValue:0]
     private var m_isFirstHit = true    // To check if it is first hit after an operand hit
     private var m_sign:Bool = true     // Sign for current typed number (true : positive, false : negative)
     private var m_number:String = "0"  // Current typed number
@@ -54,7 +59,6 @@ class ViewController: UIViewController {
      - Returns: None
      */
     override func viewDidLoad() {
-        
         // Set font properties of calEquation
         calEquation.numberOfLines = 0
         calEquation.adjustsFontSizeToFitWidth = true
@@ -125,7 +129,11 @@ class ViewController: UIViewController {
                 break;
             
             // Operands
-            case "%", "÷", "x", "-", "+":
+        case m_eOperand.mod.rawValue
+            , m_eOperand.div.rawValue
+            , m_eOperand.mul.rawValue
+            , m_eOperand.sub.rawValue
+            , m_eOperand.add.rawValue:
                 // For the multiple hit -> only the first hit counts
                 if ((m_operand.isEmpty)
                     && (!m_isFirstHit)) {
@@ -258,15 +266,15 @@ class ViewController: UIViewController {
         var calNum : Double = 0
         
         switch (strOp) {
-            case "+":
+            case m_eOperand.mul.rawValue:
                 calNum = num1 + num2
-            case "-":
+            case m_eOperand.sub.rawValue:
                 calNum = num1 - num2
-            case "%":
+            case m_eOperand.mod.rawValue:
                 calNum = num1.truncatingRemainder(dividingBy: num2) // div 0? -> nan
-            case "÷":
+            case m_eOperand.div.rawValue:
                 calNum = num1 / num2 // div 0? -> inf
-            case "x":
+            case m_eOperand.mul.rawValue:
                 calNum = num1 * num2
             default:
                 calNum = 0
