@@ -190,7 +190,16 @@ class ViewController: UIViewController {
                     calHistory03.text = calHistory02.text
                     calHistory02.text = calHistory01.text
                     calHistory01.text = strFinalEquation
-                    m_isFirstHit = true  // true to first hit -> now operand is not applicable
+                    //m_isFirstHit = true  // true to first hit -> now operand is not applicable
+                    
+                    // Check the result and decide if to keep the result or not
+                    if (m_spResultInf != calNum) && (m_spResultNan != calNum) {
+                        // If the result is not special case keep the number
+                        m_number = calNum
+                        calResult.text = m_number
+                        calEquation.text = calNum
+                        m_isFirstHit = false
+                    }
                 }
                 break;
             
