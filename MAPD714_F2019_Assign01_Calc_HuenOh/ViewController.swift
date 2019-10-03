@@ -11,7 +11,7 @@
  StudentID: 301082798
  Date: 2019.09.29
  App description: The Calculator; Simple calculator
- Version information: 1.1 (% -> mod)
+ Version information: 1.2 - multiple operand hit, result reuse
  */
 
 import UIKit
@@ -121,14 +121,16 @@ class ViewController: UIViewController {
                     break;
                 }
                 
+                // Update sign of the number
                 if (m_sign == false) {
                     m_number = String(m_number[m_number.index(after:m_number.startIndex)...])
                 } else {
                     m_number = "-" + m_number
                 }
-                calResult.text = m_number
-                
                 m_sign = !m_sign
+                
+                // Update Display
+                calResult.text = m_number
                 calEquation.text = m_equation + m_operand + updateSignOfNumber(number:m_number)
                 break;
             
