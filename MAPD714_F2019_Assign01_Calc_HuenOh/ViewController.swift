@@ -138,8 +138,10 @@ class ViewController: UIViewController {
                 , m_eOperand.mul.rawValue
                 , m_eOperand.sub.rawValue
                 , m_eOperand.add.rawValue:
-                    // For the multiple hit -> only the first hit counts
+                
                     if (!m_isFirstHit) {
+                        // Do calucation of current equation and update result
+                        
                         // Add to list
                         m_listNumbers.append(m_number)
                         m_listOperands.append(calButton)
@@ -156,10 +158,14 @@ class ViewController: UIViewController {
                         m_number = "0"
                         m_sign = true
                         m_isFirstHit = true // true to first hit -> now operand is not applicable
+                        
                     } else {
-                        // Do nothing
-                        //let calEqCur = calEquation.text ?? ""
-                        //calEquation.text = String(calEqCur[calEqCur.startIndex..<calEqCur.index(before: calEqCur.endIndex)]) + calButton
+                        // Update the operand
+                        if(!m_listOperands.isEmpty) {
+                            m_operand = calButton
+                            m_listOperands[m_listOperands.endIndex - 1] = m_operand
+                            calEquation.text = m_equation + m_operand
+                        }
                     }
                     break;
             
