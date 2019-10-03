@@ -171,6 +171,10 @@ class ViewController: UIViewController {
             // Do calcuation and show the result
             case "=":
                 if (!m_isFirstHit) {
+                    
+                    // Condition to not work if there is only one number
+                    if m_listNumbers.endIndex == 0 { break; }
+                    
                     // Append number to the number list
                     m_listNumbers.append(m_number)
                     
