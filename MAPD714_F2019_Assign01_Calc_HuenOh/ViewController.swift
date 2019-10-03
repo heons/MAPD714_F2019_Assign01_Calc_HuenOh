@@ -133,35 +133,35 @@ class ViewController: UIViewController {
                 break;
             
             // Operands
-        case m_eOperand.mod.rawValue
-            , m_eOperand.div.rawValue
-            , m_eOperand.mul.rawValue
-            , m_eOperand.sub.rawValue
-            , m_eOperand.add.rawValue:
-                // For the multiple hit -> only the first hit counts
-                if (!m_isFirstHit) {
-                    // Add to list
-                    m_listNumbers.append(m_number)
-                    m_listOperands.append(calButton)
-                    
-                    // Update and display the equation
-                    m_equation = m_equation + m_operand + updateSignOfNumber(number:m_number)
-                    calEquation.text = m_equation + calButton
-                    
-                    // Display current result
-                    calResult.text = doCalEquation()
-                    
-                    // Clear and Update
-                    m_operand = calButton
-                    m_number = "0"
-                    m_sign = true
-                    m_isFirstHit = true // true to first hit -> now operand is not applicable
-                } else {
-                    // Do nothing
-                    //let calEqCur = calEquation.text ?? ""
-                    //calEquation.text = String(calEqCur[calEqCur.startIndex..<calEqCur.index(before: calEqCur.endIndex)]) + calButton
-                }
-                break;
+            case m_eOperand.mod.rawValue
+                , m_eOperand.div.rawValue
+                , m_eOperand.mul.rawValue
+                , m_eOperand.sub.rawValue
+                , m_eOperand.add.rawValue:
+                    // For the multiple hit -> only the first hit counts
+                    if (!m_isFirstHit) {
+                        // Add to list
+                        m_listNumbers.append(m_number)
+                        m_listOperands.append(calButton)
+                        
+                        // Update and display the equation
+                        m_equation = m_equation + m_operand + updateSignOfNumber(number:m_number)
+                        calEquation.text = m_equation + calButton
+                        
+                        // Display current result
+                        calResult.text = doCalEquation()
+                        
+                        // Clear and Update
+                        m_operand = calButton
+                        m_number = "0"
+                        m_sign = true
+                        m_isFirstHit = true // true to first hit -> now operand is not applicable
+                    } else {
+                        // Do nothing
+                        //let calEqCur = calEquation.text ?? ""
+                        //calEquation.text = String(calEqCur[calEqCur.startIndex..<calEqCur.index(before: calEqCur.endIndex)]) + calButton
+                    }
+                    break;
             
             // Do calcuation and show the result
             case "=":
