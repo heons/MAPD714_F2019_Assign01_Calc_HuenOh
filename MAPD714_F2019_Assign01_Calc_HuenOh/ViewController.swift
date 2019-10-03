@@ -129,7 +129,7 @@ class ViewController: UIViewController {
                 calResult.text = m_number
                 
                 m_sign = !m_sign
-                calEquation.text = m_equation + updateSignOfNumber(number:m_number)
+                calEquation.text = m_equation + m_operand + updateSignOfNumber(number:m_number)
                 break;
             
             // Operands
@@ -139,21 +139,20 @@ class ViewController: UIViewController {
             , m_eOperand.sub.rawValue
             , m_eOperand.add.rawValue:
                 // For the multiple hit -> only the first hit counts
-                if ((m_operand.isEmpty)
-                    && (!m_isFirstHit)) {
-                    
-                    m_operand = calButton
+                if (//(m_operand.isEmpty)
+                    (!m_isFirstHit)) {
                     
                     // add to list
                     m_listNumbers.append(m_number)
-                    m_listOperands.append(m_operand)
+                    m_listOperands.append(calButton)
                     
                     // m_operand, calCur
-                    m_equation = m_equation + updateSignOfNumber(number:m_number) + m_operand
-                    calEquation.text = m_equation
+                    m_equation = m_equation + m_operand + updateSignOfNumber(number:m_number)
+                    calEquation.text = m_equation + calButton
                     
+                    m_operand = calButton
                     //clear
-                    m_operand = ""
+                    //m_operand = ""
                     m_number = "0"
                     m_sign = true
                     
@@ -182,7 +181,7 @@ class ViewController: UIViewController {
                     let calNum = doCalEquation()
      
                     //set text and reset
-                    let strFinalEquation = m_equation + updateSignOfNumber(number:m_number) + "=" + calNum
+                    let strFinalEquation = m_equation + m_operand + updateSignOfNumber(number:m_number) + "=" + calNum
                     initVariables()
                     
                     // Update history
@@ -211,7 +210,7 @@ class ViewController: UIViewController {
                 } else {
                     m_number += calButton
                     calResult.text = m_number
-                    calEquation.text = m_equation + updateSignOfNumber(number:m_number)
+                    calEquation.text = m_equation + m_operand + updateSignOfNumber(number:m_number)
                 }
                 break;
             
@@ -225,7 +224,7 @@ class ViewController: UIViewController {
                     m_number = m_number + calButton
                 }
                 calResult.text = m_number
-                calEquation.text = m_equation + updateSignOfNumber(number:m_number)
+                calEquation.text = m_equation + m_operand + updateSignOfNumber(number:m_number)
         }
     }
     
