@@ -270,7 +270,7 @@ class ViewController: UIViewController {
         var calNum : Double = 0
         
         switch (strOp) {
-            case m_eOperand.mul.rawValue:
+            case m_eOperand.add.rawValue:
                 calNum = num1 + num2
             case m_eOperand.sub.rawValue:
                 calNum = num1 - num2
