@@ -492,7 +492,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
                                                         <color key="backgroundColor" red="0.40000000000000002" green="0.46666666670000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                                        <state key="normal" title="%">
+                                                        <state key="normal" title="mod">
                                                             <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </state>
                                                         <connections>
@@ -1491,10 +1491,10 @@
                                 <exclude reference="aRN-I9-5y1"/>
                                 <exclude reference="sKF-k9-fvk"/>
                                 <exclude reference="yGr-ju-CBh"/>
-                                <exclude reference="1N1-7V-YKC"/>
-                                <exclude reference="DIu-v5-3Jo"/>
                                 <exclude reference="KC2-Yx-yA4"/>
                                 <exclude reference="z2b-VQ-9XY"/>
+                                <exclude reference="1N1-7V-YKC"/>
+                                <exclude reference="DIu-v5-3Jo"/>
                                 <exclude reference="4ec-Yi-Km0"/>
                                 <exclude reference="Gfa-U7-AVW"/>
                                 <exclude reference="NyQ-Q2-vAW"/>
@@ -1515,12 +1515,12 @@
                                 <include reference="Ggd-l6-nHR"/>
                                 <include reference="Ugt-6O-OX3"/>
                                 <include reference="yGr-ju-CBh"/>
-                                <include reference="1N1-7V-YKC"/>
                                 <exclude reference="Dy6-jK-T2Z"/>
                                 <exclude reference="KC2-Yx-yA4"/>
                                 <exclude reference="KeM-cL-NET"/>
                                 <exclude reference="X3s-tK-1AI"/>
                                 <include reference="z2b-VQ-9XY"/>
+                                <include reference="1N1-7V-YKC"/>
                                 <include reference="Gfa-U7-AVW"/>
                                 <exclude reference="ZG5-BZ-9w0"/>
                             </mask>

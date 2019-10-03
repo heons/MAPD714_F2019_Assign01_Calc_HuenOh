@@ -11,7 +11,7 @@
  StudentID: 301082798
  Date: 2019.09.29
  App description: The Calculator; Simple calculator
- Version information: 1.0
+ Version information: 1.1 (% -> mod)
  */
 
 import UIKit
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     
     /* Member Variables */
     // Enums for Operands
-    private enum m_eOperand : String {case mod="%", div="÷", mul="x", sub="-", add="+"}
+    private enum m_eOperand : String {case mod="mod", div="÷", mul="x", sub="-", add="+"}
     
     // Special result : nan, inf
     private let m_spResultNan = "nan"
