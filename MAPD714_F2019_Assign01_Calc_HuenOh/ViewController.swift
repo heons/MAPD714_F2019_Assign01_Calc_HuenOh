@@ -139,26 +139,22 @@ class ViewController: UIViewController {
             , m_eOperand.sub.rawValue
             , m_eOperand.add.rawValue:
                 // For the multiple hit -> only the first hit counts
-                if (//(m_operand.isEmpty)
-                    (!m_isFirstHit)) {
-                    
-                    // add to list
+                if (!m_isFirstHit) {
+                    // Add to list
                     m_listNumbers.append(m_number)
                     m_listOperands.append(calButton)
                     
-                    // m_operand, calCur
+                    // Update and display the equation
                     m_equation = m_equation + m_operand + updateSignOfNumber(number:m_number)
                     calEquation.text = m_equation + calButton
-                    
-                    m_operand = calButton
-                    //clear
-                    //m_operand = ""
-                    m_number = "0"
-                    m_sign = true
                     
                     // Display current result
                     calResult.text = doCalEquation()
                     
+                    // Clear and Update
+                    m_operand = calButton
+                    m_number = "0"
+                    m_sign = true
                     m_isFirstHit = true // true to first hit -> now operand is not applicable
                 } else {
                     // Do nothing
@@ -352,7 +348,6 @@ class ViewController: UIViewController {
                     if (calNum.contains(m_spResultInf)) {
                         return m_spResultInf
                     }
-                    
                     
                 } else {
                     // +, - : add to the lists for step2
