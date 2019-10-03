@@ -199,6 +199,11 @@ class ViewController: UIViewController {
                         calEquation.text = calNum
                         m_isFirstHit = false
                     }
+                    
+                    // Check and update the sign of the number
+                    if (calNum.contains("-")) {
+                        m_sign = false
+                    }
                 }
                 break;
             
