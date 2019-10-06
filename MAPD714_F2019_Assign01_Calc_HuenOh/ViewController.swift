@@ -30,19 +30,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var calResult: UILabel!    // Label for current number and result of the calcuation
     
     /* Member Variables */
-    // Enums for Operands
-    private enum m_eOperand : String {case mod="mod", div="÷", mul="x", sub="-", add="+"}
+    // Enums for Operands - It is a type!!!
+    private enum Operands : String {case mod="mod", div="÷", mul="x", sub="-", add="+"}
     
     // Special result : nan, inf
     private let m_spResultNan = "nan"
     private let m_spResultInf = "inf"
     
     // Dictionary for operands' priority
-    private let m_dictOperands:[String: Int] = [m_eOperand.mod.rawValue:1
-                                                , m_eOperand.div.rawValue:1
-                                                , m_eOperand.mul.rawValue:1
-                                                , m_eOperand.sub.rawValue:0
-                                                , m_eOperand.add.rawValue:0]
+    private let m_dictOperands:[String: Int] = [Operands.mod.rawValue:1
+                                                , Operands.div.rawValue:1
+                                                , Operands.mul.rawValue:1
+                                                , Operands.sub.rawValue:0
+                                                , Operands.add.rawValue:0]
     private var m_isFirstHit = true    // To check if it is first hit after an operand hit
     private var m_sign:Bool = true     // Sign for current typed number (true : positive, false : negative)
     private var m_number:String = "0"  // Current typed number
@@ -135,11 +135,11 @@ class ViewController: UIViewController {
                 break;
             
             // Operands
-            case m_eOperand.mod.rawValue
-                , m_eOperand.div.rawValue
-                , m_eOperand.mul.rawValue
-                , m_eOperand.sub.rawValue
-                , m_eOperand.add.rawValue:
+            case Operands.mod.rawValue
+                , Operands.div.rawValue
+                , Operands.mul.rawValue
+                , Operands.sub.rawValue
+                , Operands.add.rawValue:
                 
                     if (!m_isFirstHit) {
                         // Do calucation of current equation and update result
@@ -291,15 +291,15 @@ class ViewController: UIViewController {
         var calNum : Double = 0
         
         switch (strOp) {
-            case m_eOperand.add.rawValue:
+            case Operands.add.rawValue:
                 calNum = num1 + num2
-            case m_eOperand.sub.rawValue:
+            case Operands.sub.rawValue:
                 calNum = num1 - num2
-            case m_eOperand.mod.rawValue:
+            case Operands.mod.rawValue:
                 calNum = num1.truncatingRemainder(dividingBy: num2) // div 0? -> nan
-            case m_eOperand.div.rawValue:
+            case Operands.div.rawValue:
                 calNum = num1 / num2 // div 0? -> inf
-            case m_eOperand.mul.rawValue:
+            case Operands.mul.rawValue:
                 calNum = num1 * num2
             default:
                 calNum = 0
