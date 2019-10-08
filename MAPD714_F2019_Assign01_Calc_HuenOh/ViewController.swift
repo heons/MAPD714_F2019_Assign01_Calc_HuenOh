@@ -317,7 +317,7 @@ class ViewController: UIViewController {
      */
     func doCalEquation()->String {
         // For Step1 : Copy list of operands and numbers
-        var listOprOrg = m_listOperands
+        let listOprOrg = m_listOperands
         var listNumOrg = m_listNumbers
         
         // For Step2 : list of perands and numbers
