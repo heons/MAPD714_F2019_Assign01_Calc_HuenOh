@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3FE312972332F39C00F2492F /* MAPD714_F2019_Assign01_Calc_HuenOh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAPD714_F2019_Assign01_Calc_HuenOh.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FE312972332F39C00F2492F /* SimpleCalculator_HuenOh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCalculator_HuenOh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE3129A2332F39C00F2492F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FE3129C2332F39C00F2492F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3FE3129F2332F39C00F2492F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		3FE3128E2332F39C00F2492F = {
 			isa = PBXGroup;
 			children = (
-				3FE312992332F39C00F2492F /* MAPD714_F2019_Assign01_Calc_HuenOh */,
+				3FE312992332F39C00F2492F /* SimpleCalculator_HuenOh */,
 				3FE312982332F39C00F2492F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,12 +46,12 @@
 		3FE312982332F39C00F2492F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3FE312972332F39C00F2492F /* MAPD714_F2019_Assign01_Calc_HuenOh.app */,
+				3FE312972332F39C00F2492F /* SimpleCalculator_HuenOh.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3FE312992332F39C00F2492F /* MAPD714_F2019_Assign01_Calc_HuenOh */ = {
+		3FE312992332F39C00F2492F /* SimpleCalculator_HuenOh */ = {
 			isa = PBXGroup;
 			children = (
 				3FE3129A2332F39C00F2492F /* AppDelegate.swift */,
@@ -61,15 +61,15 @@
 				3FE312A32332F39C00F2492F /* LaunchScreen.storyboard */,
 				3FE312A62332F39C00F2492F /* Info.plist */,
 			);
-			path = MAPD714_F2019_Assign01_Calc_HuenOh;
+			path = SimpleCalculator_HuenOh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3FE312962332F39C00F2492F /* MAPD714_F2019_Assign01_Calc_HuenOh */ = {
+		3FE312962332F39C00F2492F /* SimpleCalculator_HuenOh */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3FE312A92332F39C00F2492F /* Build configuration list for PBXNativeTarget "MAPD714_F2019_Assign01_Calc_HuenOh" */;
+			buildConfigurationList = 3FE312A92332F39C00F2492F /* Build configuration list for PBXNativeTarget "SimpleCalculator_HuenOh" */;
 			buildPhases = (
 				3FE312932332F39C00F2492F /* Sources */,
 				3FE312942332F39C00F2492F /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = MAPD714_F2019_Assign01_Calc_HuenOh;
+			name = SimpleCalculator_HuenOh;
 			productName = MAPD714_F2019_Assign01_Calc_HuenOh;
-			productReference = 3FE312972332F39C00F2492F /* MAPD714_F2019_Assign01_Calc_HuenOh.app */;
+			productReference = 3FE312972332F39C00F2492F /* SimpleCalculator_HuenOh.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +99,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3FE312922332F39C00F2492F /* Build configuration list for PBXProject "MAPD714_F2019_Assign01_Calc_HuenOh" */;
+			buildConfigurationList = 3FE312922332F39C00F2492F /* Build configuration list for PBXProject "SimpleCalculator_HuenOh" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3FE312962332F39C00F2492F /* MAPD714_F2019_Assign01_Calc_HuenOh */,
+				3FE312962332F39C00F2492F /* SimpleCalculator_HuenOh */,
 			);
 		};
 /* End PBXProject section */
@@ -284,13 +284,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BULHRS882;
-				INFOPLIST_FILE = MAPD714_F2019_Assign01_Calc_HuenOh/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SimpleCalculator_HuenOh/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ca.centennialcollege.MAPD714-F2019-Assign01-Calc-HuenOh";
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.centennialcollege.SimpleCalculator-HuenOh";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -303,13 +303,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BULHRS882;
-				INFOPLIST_FILE = MAPD714_F2019_Assign01_Calc_HuenOh/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SimpleCalculator_HuenOh/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ca.centennialcollege.MAPD714-F2019-Assign01-Calc-HuenOh";
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.centennialcollege.SimpleCalculator-HuenOh";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -319,7 +319,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3FE312922332F39C00F2492F /* Build configuration list for PBXProject "MAPD714_F2019_Assign01_Calc_HuenOh" */ = {
+		3FE312922332F39C00F2492F /* Build configuration list for PBXProject "SimpleCalculator_HuenOh" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FE312A72332F39C00F2492F /* Debug */,
@@ -328,7 +328,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3FE312A92332F39C00F2492F /* Build configuration list for PBXNativeTarget "MAPD714_F2019_Assign01_Calc_HuenOh" */ = {
+		3FE312A92332F39C00F2492F /* Build configuration list for PBXNativeTarget "SimpleCalculator_HuenOh" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FE312AA2332F39C00F2492F /* Debug */,
